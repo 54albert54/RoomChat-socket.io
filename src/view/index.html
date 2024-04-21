@@ -3,12 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>Document</title>
+    <!-- //<link rel="stylesheet" href="./style.css" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Chat Spacer</title>
   </head>
-  <body>
-    <h1>Hello World</h1>
+  <body class="bg-slate-400 sm:p-10">
+    <header
+      class="w-[80%] min-w-[425px] sm:mx-auto h-[100px] bg-blue-800 rounded-t-2xl flex justify-center items-center shadow-lg"
+    >
+      <p class="text-3xl font-bold text-gray-100">Welcome to my ChatSpace</p>
+    </header>
+    <main
+      class="w-[80%] min-w-[425px] sm:mx-auto h-[600px] bg-blue-200 flex justify-cejnter items-center shadow-lg relative"
+    >
+      <div
+        class="sm:w-[30%] w-[200px] h-full bg-blue-400 border-gray-300 shadow-lg"
+      >
+        <ul id="users" class="px-10 py-6 flex-col flex gap-4"></ul>
+      </div>
+      <div id="chatContainer" class="w-[70%] h-full relative overflow-y-auto">
+        <section id="messages" class="p-10 flex-col flex gap-4">
+          <!-- section for add news messages -->
+        </section>
+      </div>
+      <!-- Send a new message -->
+      <form
+        id="form"
+        class="w-full h-[90px] mx-auto bg-blue-800 px-10 flex justify-center items-center rounded-b-2xl shadow-lg absolute -bottom-[90px]"
+      >
+        <div
+          class="sm:w-[40%] h-[100px] flex justify-center items-center gap-5"
+        >
+          <!-- <p>user: <span id="userOwner"></span></p> -->
+        </div>
+        <input
+          type="text"
+          id="textArea"
+          name="textArea"
+          placeholder="your msj"
+          class="sm:w-[60%] w-[80%] h-[50px] bg-blue-100 pl-8 rounded-2xl border border-gray-300 shadow-lg"
+        />
+
+        <button
+          class="ml-5 py-3 px-5 bg-green-600 text-white rounded-2xl hover:bg-green-700 active:bg-green-800"
+          id="sendMEssageButon"
+          type="reset"
+        >
+          send
+        </button>
+      </form>
+    </main>
   </body>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="./js/index.js"></script>
+  <script src="/js/chat.js"></script>
 </html>

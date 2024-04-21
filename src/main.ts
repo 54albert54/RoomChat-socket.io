@@ -1,49 +1,26 @@
-process.env.DEBUG = "socket.io:*";
+//process.env.DEBUG = "socket.io:*";
 //process.env.DEBUG = "*";
 
 import express from "express";
-import { Server } from "socket.io";
-import { createServer } from "http";
 
-interface Client {
-  id: string;
-  x: string;
-  y: string;
-}
+import { createServer } from "http";
+import cookieParser from "cookie-parser";
+import createDinamicServer from "./realTime";
+import router from "./router";
+import path from "path";
+
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer);
-const allClients: Client[] = [];
 
-app.use(express.static(__dirname + "/view"));
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/view/index.html");
-});
-// middleware for socket.io
-io.use((socket, next) => {
-  // add middleware berfore connection
-  const token = socket.handshake.auth.token;
-  if (!token) {
-    return next(new Error("invalid token"));
-  } else {
-    if (token === "123") {
-      next();
-    } else {
-      return next(new Error("invalid token"));
-    }
-  }
-});
-io.use((socket, next) => {
-  //dummy middleware
-  next();
-});
+app.use(cookieParser());
+// where you have a html file
+app.set("views", path.join(__dirname, "views"));
 
-io.on("connection", (socket) => {
-  console.log("a user connected", socket.id);
-});
+app.use(router);
 
-app.get("/data", (req, res) => {
-  res.json({ message: "Hello World" });
-});
+// Public where you have a public folder
+app.use(express.static(path.join(__dirname, "../public")));
 
-httpServer.listen(3000); // Listen on port 3000 for used socket.io
+export default httpServer.listen(3000); // Listen on port 3000 for used socket.io
+
+createDinamicServer(httpServer);

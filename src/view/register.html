@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- //<link rel="stylesheet" href="./style.css" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Chat Spacer: Register</title>
+  </head>
+  <body class="bg-slate-400 sm:p-10">
+    <header
+      class="w-[80%] min-w-[425px] mx-auto h-[100px] bg-blue-800 rounded-t-2xl flex justify-center items-center shadow-lg"
+    >
+      <p class="text-3xl font-bold text-gray-100">Register</p>
+    </header>
+    <main
+      class="w-[80%] min-w-[425px] mx-auto h-[600px] bg-blue-200 rounded-b-2xl flex justify-center items-center shadow-lg"
+    >
+      <form
+        action="#"
+        method="POST"
+        class="sm:w-[40%] mx-auto bg-blue-800 p-10 text-center rounded-2xl border border-gray-300 shadow-lg"
+      >
+        <label
+          class="flex flex-row justify-start items-center gap-8 mb-5"
+          for="username"
+        >
+          <p class="text-white text-2lg font-semibold">Username</p>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="your username"
+          />
+        </label>
+
+        <button
+          class="ml-5 py-2 px-3 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 active:bg-blue-800"
+          id="registerButon"
+          type="button"
+        >
+          Register
+        </button>
+      </form>
+    </main>
+  </body>
+
+  <script src="/js/register.js"></script>
+</html>

@@ -4,13 +4,14 @@
   "description": "",
   "main": "src/main.ts",
   "scripts": {
-    "dev": "nodemon src/index.ts",
+    "dev": "nodemon src/main.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cookie-parser": "^1.4.7",
     "@types/express": "^4.17.21",
     "express": "^4.19.2",
     "socket.io": "^4.7.5",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@types/node": "^20.12.7",
     "bufferutil": "^4.0.8",
+    "cookie-parser": "^1.4.6",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",
     "utf-8-validate": "^5.0.10"
