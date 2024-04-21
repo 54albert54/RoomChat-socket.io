@@ -48,7 +48,7 @@ const sendAMessage = () => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log("clicked");
+
   if (messageToSend.value != "") {
     sendAMessage();
   }
@@ -60,9 +60,8 @@ sendMEssageButon.addEventListener("click", () => {
   }
 });
 
-const drawMessage = ({ user, message, id }) => {
+const drawMessage = ({ user, message }) => {
   let isUser = isUserOwner === user;
-  console.log("isUserOwner;", isUser);
 
   const msj = ` 
           <div

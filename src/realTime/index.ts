@@ -7,7 +7,6 @@ interface Client {
 interface Message {
   user: string;
   message: string;
-  id: string;
 }
 
 let allClients: Client[] = [];
@@ -44,7 +43,7 @@ export default function createDinamicServer(httpServer: any) {
       const userName = allClients.find((client) => client.id == socket.id)
         ?.userName!;
 
-      allMessages.push({ user: userName, message: data, id: socket.id });
+      allMessages.push({ user: userName, message: data });
 
       io.emit("receive-message", allMessages);
     });
