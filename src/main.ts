@@ -12,6 +12,8 @@ import path from "path";
 const app = express();
 const httpServer = createServer(app);
 
+const port = process.env.PORT || 4000;
+
 app.use(cookieParser());
 // where you have a html file
 app.set("views", path.join(__dirname, "views"));
@@ -21,6 +23,8 @@ app.use(router);
 // Public where you have a public folder
 app.use(express.static(path.join(__dirname, "../public")));
 
-export default httpServer.listen(3000); // Listen on port 3000 for used socket.io
+export default httpServer.listen(port, () =>
+  console.log(`server running on port ${port}`)
+); // Listen on port  for used socket.io
 
 createDinamicServer(httpServer);

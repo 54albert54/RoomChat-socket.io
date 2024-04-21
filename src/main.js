@@ -13,11 +13,12 @@ const router_1 = __importDefault(require("./router"));
 const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
 const httpServer = (0, http_1.createServer)(app);
+const port = process.env.PORT || 4000;
 app.use((0, cookie_parser_1.default)());
 // where you have a html file
 app.set("views", path_1.default.join(__dirname, "views"));
 app.use(router_1.default);
 // Public where you have a public folder
 app.use(express_1.default.static(path_1.default.join(__dirname, "../public")));
-exports.default = httpServer.listen(3000); // Listen on port 3000 for used socket.io
+exports.default = httpServer.listen(port, () => console.log(`server running on port ${port}`)); // Listen on port  for used socket.io
 (0, realTime_1.default)(httpServer);
